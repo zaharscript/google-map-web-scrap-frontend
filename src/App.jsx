@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -10,13 +11,14 @@ function App() {
 
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/search", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query }),
-      });
-      const data = await response.json();
-      setResults(data);
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/scrape`,
+        { query },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      setResults(response.data);
     } catch (err) {
       console.error("Error:", err);
     } finally {
@@ -25,7 +27,10 @@ function App() {
   };
 
   const downloadFile = (type) => {
-    window.open(`http://localhost:5000/download/${type}`, "_blank");
+    window.open(
+      `${import.meta.env.VITE_API_BASE_URL}/download/${type}`,
+      "_blank"
+    );
   };
 
   return (
