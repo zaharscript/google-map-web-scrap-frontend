@@ -34,77 +34,66 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center">
-      <div className="form-area bg-cover bg-center w-full p-6 text-center">
-        <h1 className="text-2xl font-bold text-white mb-6">
-          <span className="animate-globe">🌍</span> Location Search
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center px-4">
+      <div className="w-full max-w-screen-xl p-4 sm:p-6 lg:p-8">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-blue-700 mb-6">
+          🌍 Location Search
         </h1>
-        <div id="content">
-          <form className="form-inline ">
-            <div className="input-group mb-3 w-full max-w-md mx-auto">
-              <input
-                type="text"
-                id="search"
-                className="form-control search-form custom-input"
-                placeholder="e.g. cafe in Kuala Lumpur"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-              <span className="input-group-btn" style={{ width: "39px" }}>
-                <button
-                  id="search-this"
-                  type="button"
-                  className="pull-right btn btn-default search-btn"
-                  onClick={handleSearch}
-                  disabled={loading}
-                >
-                  <i className="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>
-          <p className="text-center">Find your favorite places!</p>
-        </div>
-      </div>
 
-      <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
+          <input
+            type="text"
+            className="w-full sm:w-2/3 md:w-1/2 px-4 py-2 border rounded shadow-sm focus:outline-none"
+            placeholder="e.g. grocery in Johor Bahru"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button
+            onClick={handleSearch}
+            disabled={loading}
+            className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            <i className="fa fa-search mr-2" />
+            Search
+          </button>
+        </div>
+
         {results.length > 0 && (
-          <div className="mt-6 ml-8 mr-8">
-            <h2 className="text-xl font-semibold  m-8">Results:</h2>
-            <div className="overflow-x-auto">
-              <table className="styled-table w-full border-collapse">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Latitude</th>
-                    <th>Longitude</th>
-                    <th>Type</th>
+          <div className="bg-white shadow rounded-lg p-4 overflow-x-auto">
+            <h2 className="text-xl font-semibold mb-4 text-center">Results:</h2>
+            <table className="min-w-full text-sm text-left border-collapse">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="p-2 border">Name</th>
+                  <th className="p-2 border">Address</th>
+                  <th className="p-2 border">Latitude</th>
+                  <th className="p-2 border">Longitude</th>
+                  <th className="p-2 border">Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                {results.map((r, i) => (
+                  <tr key={i} className="hover:bg-gray-50">
+                    <td className="p-2 border">{r.name}</td>
+                    <td className="p-2 border">{r.address}</td>
+                    <td className="p-2 border">{r.lat}</td>
+                    <td className="p-2 border">{r.lon}</td>
+                    <td className="p-2 border">{r.type}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {results.map((r, i) => (
-                    <tr key={i}>
-                      <td>{r.name}</td>
-                      <td>{r.address}</td>
-                      <td>{r.lat}</td>
-                      <td>{r.lon}</td>
-                      <td>{r.type}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="mt-4 space-x-4">
+                ))}
+              </tbody>
+            </table>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
               <button
                 onClick={() => downloadFile("csv")}
-                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded"
               >
                 Download CSV
               </button>
               <button
                 onClick={() => downloadFile("excel")}
-                className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded"
               >
                 Download Excel
               </button>
