@@ -1,297 +1,93 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.form-area {
+  background-image: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  padding: 2rem 1rem;
+  width: 100%;
+  text-align: center;
+  color: white;
+  position: relative;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+.form-area::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
 }
 
-a:hover {
-  color: #535bf2;
+.form-area>* {
+  position: relative;
+  z-index: 1;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  /* Arrange elements vertically */
-  align-items: center;
-  /* Center elements horizontally */
-  justify-content: flex-start;
-  /* Align elements at the top */
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.5em;
-  line-height: 1.1;
-  color: whitesmoke;
-  margin-bottom: 1em;
-  /* Add spacing below the h1 */
-}
-
-.input-container {
-  display: flex;
-  /* Use flexbox to align input and button side by side */
-  align-items: center;
-  /* Align items vertically */
-  gap: 1em;
-  /* Add spacing between input and button */
-}
-
-input {
-  flex: 1;
-  /* Allow input to take up remaining space */
-  padding: 0.6em;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-button {
-  border-radius: 6px;
-  border: 0.5px solid transparent;
-  padding: 0.6em 1.2em;
-  margin-bottom: 0.5em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  color: black;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-button:hover {
-  border-color: #646cff;
-  color: whitesmoke;
-  background-color: crimson;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes spin-horizontal {
-  0% {
-    transform: rotateX(0deg);
-  }
-
-  100% {
-    transform: rotateX(360deg);
-  }
+#content {
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .animate-globe {
   display: inline-block;
-  animation: spin 2s linear infinite;
+  animation: rotate 2s linear infinite;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
   }
 
-  a:hover {
-    color: #747bff;
+  to {
+    transform: rotate(360deg);
   }
-
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-.form-area {
-  background-image: url('https://cdn.pixabay.com/photo/2025/05/31/21/25/insects-9634230_1280.jpg');
-  /* Replace with your desired image URL */
-  background-size: cover;
-  /* Ensure the image covers the entire area */
-  background-repeat: no-repeat;
-  /* Prevent the image from repeating */
-  background-position: center;
-  /* Center the image */
-  width: 100vw;
-  /* Make the container span the full width */
-  /* height: 100vh; */
-  /* Make the container span the full height of the viewport */
-  color: white;
-  /* Ensure text is readable on the background */
-  display: flex;
-  /* Use flexbox for alignment */
-  flex-direction: column;
-  /* Arrange elements vertically */
-  justify-content: center;
-  /* Center elements vertically */
-  align-items: center;
-  /* Center elements horizontally */
-  padding: 1rem;
-  box-sizing: border-box;
 }
 
 .styled-table {
-  width: 100%;
   border-collapse: collapse;
-  font-size: 1em;
-  font-family: Arial, sans-serif;
-  text-align: left;
+  font-family: sans-serif;
+  min-width: 400px;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin: 0 auto;
 }
 
 .styled-table thead tr {
-  background-color: #b71c1c;
-  /* Header background color */
-  color: white;
-  /* Header text color */
-  font-weight: bold;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: #ffffff;
+  text-align: left;
 }
 
 .styled-table th,
 .styled-table td {
   padding: 12px 15px;
-  /* Padding for table cells */
-  border: 1px solid #ddd;
-  /* Border for table cells */
+  text-align: left;
 }
 
 .styled-table tbody tr {
-  background-color: #f9f9f9;
-  /* Default row background color */
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.styled-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-  /* Alternating row background color */
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f8fafc;
 }
 
 .styled-table tbody tr:hover {
-  background-color: #f1c0c0;
-  /* Hover effect for rows */
+  background-color: #3e98f1;
+  color: #f2f7fd;
 }
 
-.custom-input {
-  width: 100rem;
-  /* Adjust the width of the input */
-  height: 1rem;
-  /* Adjust the height of the input */
-  padding: 0.5rem;
-  /* Add padding inside the input */
-  margin-right: 2rem;
-  font-size: 1rem;
-  /* Adjust the font size */
-  border: 1px solid #ccc;
-  /* Add a border */
-  border-radius: 8px;
-  /* Round the corners */
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #3b82f6;
 }
 
-/* General styles for responsiveness */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  font-family: Arial, sans-serif;
+Footer social icons hover effects .social-icon {
+  transition: all 0.3s ease;
 }
 
-.input-group {
-  width: 100%;
-  max-width: 600px;
-  /* Limit the width of the input group */
-  display: flex;
-  flex-wrap: wrap;
-  /* Allow wrapping for smaller screens */
-}
-
-.search-form {
-  flex: 1;
-  /* Make the input take up available space */
-  border-radius: 30px 0 0 30px;
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-
-.input-group-btn {
-  max-width: 39px;
-}
-
-.search-btn {
-  cursor: pointer;
-  border-radius: 0 30px 30px 0;
-  background-color: #fff;
-  color: #669;
-  border: 1px solid #ccc;
-  padding: 0.5rem;
-}
-
-.text-center {
-  color: #fff;
-  font-size: 1.2rem;
-  margin-top: 1rem;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .form-area {
-    padding: 2rem;
-    height: auto;
-    /* Adjust height for smaller screens */
-  }
-
-  .input-group {
-    flex-direction: column;
-    /* Stack input and button vertically */
-    max-width: 100%;
-    /* Use full width on smaller screens */
-  }
-
-  .search-form {
-    border-radius: 30px;
-    /* Adjust border radius for stacked layout */
-    margin-bottom: 0.5rem;
-    /* Add spacing between input and button */
-  }
-
-  .search-btn {
-    border-radius: 30px;
-    /* Adjust border radius for stacked layout */
-  }
-
-  .text-center {
-    font-size: 1rem;
-    /* Reduce font size for smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .form-area {
-    padding: 1rem;
-  }
-
-  .text-center {
-    font-size: 0.9rem;
-    /* Further reduce font size for very small screens */
-  }
+.social-icon:hover {
+  transform: translateY(-2px);
 }
