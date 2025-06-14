@@ -38,34 +38,9 @@ function App() {
 
   return (
     <>
-      <style>
-        {`
-          @keyframes spin {
-            to { transform: rotate(360deg); }
-          }
-          .search-container {
-            background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 50%, #1e3a8a 100%);
-            min-height: 200px;
-          }
-          .search-input:focus {
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
-          }
-          .search-button:hover {
-            transform: scale(1.05);
-          }
-        `}
-      </style>
       <div className="min-h-screen bg-gray-100 flex flex-col items-center">
-        {/* Hero Section */}
-        <div
-          className="form-area bg-cover bg-center w-full p-2 sm:p-4 md:p-6 lg:p-8 xl:p-10 text-center"
-          style={{
-            background:
-              "linear-gradient(135deg, #1e40af 0%, #1d4ed8 50%, #1e3a8a 100%)",
-            minHeight: "200px",
-            padding: "2rem 1rem",
-          }}
-        >
+        Hero Section
+        <div className="form-area bg-cover bg-center w-full p-2 sm:p-4 md:p-6 lg:p-8 xl:p-10 text-center">
           <h1
             className="font-bold text-white mb-6"
             style={{
@@ -90,14 +65,14 @@ function App() {
           </h1>
 
           <div id="content">
-            <div className="mb-6 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto">
-              <div className="flex rounded-lg overflow-hidden shadow-lg border border-white/20">
+            <div className="w-full px-4 max-w-4xl mx-auto mb-6">
+              <div className="flex rounded-lg  overflow-hidden shadow-lg border border-white/20">
                 <input
                   type="text"
                   id="search"
-                  className="flex-1 min-h-10 sm:min-h-12 px-3 sm:px-4 text-sm sm:text-base 
+                  className="flex-1 min-h-10 sm:min-h-12 px-3  sm:px-4 text-sm sm:text-base 
                            bg-white text-gray-900 placeholder-gray-500
-                           focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+                           focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded-l-lg"
                   placeholder="e.g. cafe in Kuala Lumpur"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
@@ -108,16 +83,15 @@ function App() {
                 <button
                   id="search-this"
                   type="button"
-                  className="min-h-10 sm:min-h-12 w-10 sm:w-12 bg-white text-blue-600 
-                           hover:bg-blue-50 hover:scale-105 transition-all duration-200 
-                           flex items-center justify-center focus:outline-none focus:ring-2 
-                           focus:ring-white focus:ring-opacity-50"
+                  className="min-h-12 w-12 sm:w-14 bg-white text-blue-600 
+             hover:bg-blue-50 hover:scale-105 transition-transform duration-200 
+             flex items-center justify-center rounded-r-lg"
                   onClick={handleSearch}
                   disabled={loading}
                   aria-label="Search button"
                 >
                   {loading ? (
-                    <div className="w-4 h-4 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
                   ) : (
                     <svg
                       className="w-4 h-4"
@@ -141,7 +115,6 @@ function App() {
             </p>
           </div>
         </div>
-
         {/* Results Section */}
         <div
           className="w-full max-w-sm sm:max-w-2xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl 
