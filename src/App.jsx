@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { FaGithub, FaXTwitter } from "react-icons/fa6";
+import Footer from "./Footer";
 import axios from "axios";
 
 function App() {
@@ -198,6 +200,7 @@ function App() {
           )}
         </div>
       </div>
+      <Footer />
     </>
   );
 }
