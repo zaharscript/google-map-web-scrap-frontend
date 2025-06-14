@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 
 function App() {
@@ -35,6 +36,27 @@ function App() {
       "_blank"
     );
   };
+
+  useEffect(() => {
+    const formArea = document.querySelector(".form-area");
+    const imageUrl =
+      "https://unsplash.com/photos/water-falls-on-rocky-mountain-during-daytime-797pFBFMI5s";
+    if (formArea) {
+      formArea.style.backgroundImage = `url('${imageUrl}')`;
+      formArea.style.backgroundSize = "cover";
+      formArea.style.backgroundPosition = "center";
+    }
+    const img = new Image();
+    img.onerror = () => {
+      // ❌ Failed to load image — fallback to gradient
+      formArea.style.backgroundImage =
+        "linear-gradient(to right, #4facfe, #00f2fe)";
+      formArea.style.backgroundSize = "cover";
+      formArea.style.backgroundPosition = "center";
+    };
+
+    img.src = imageUrl;
+  }, []);
 
   return (
     <>
